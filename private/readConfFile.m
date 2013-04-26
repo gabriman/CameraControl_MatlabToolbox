@@ -1,4 +1,4 @@
-function [ mapObj ] = readConfFile( dirPath )
+function [ mapObj ] = readConfFile( programFolder )
 %READCONFFILE Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -7,7 +7,7 @@ import javax.xml.xpath.*
 factory = XPathFactory.newInstance;
 xpath = factory.newXPath;
 
-fullPath = fullfile(dirPath,'cfg/config.xml');
+fullPath = fullfile(programFolder,'cfg/config.xml');
 docNode = xmlread(fullPath);
 
 % compile and evaluate the XPath Expression
@@ -31,8 +31,9 @@ expression = xpath.compile('config/executable');
 executableNode = expression.evaluate(docNode, XPathConstants.NODE);
 executable = executableNode.getTextContent;
 
-keySet   = {'directoryIn','fileIn','directoryOut','fileOut','executable'};
-valueSet = {directoryIn,fileIn,directoryOut,fileOut,executable};
+
+keySet   = {'programFolder','directoryIn','fileIn','directoryOut','fileOut','executable'};
+valueSet = {programFolder,directoryIn,fileIn,directoryOut,fileOut,executable};
 mapObj = containers.Map(keySet,valueSet);
 
 end

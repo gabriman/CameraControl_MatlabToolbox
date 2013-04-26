@@ -1,16 +1,14 @@
-function [  ] = camControl_Init(  )
+function [options,XMLobj] = camControl_Init(  )
 %INITPROGRAM Summary of this function goes here
 %   Detailed explanation goes here
 
 programFolder = uigetdir;
 options = readConfFile(programFolder);
-exe = char(options('executable'))
+exe = char(options('executable'));
 % 
-command = ['start /b ' programFolder '\' exe]
+command = ['start /b ' programFolder '\' exe];
 system(command)
 
-%exeFile = strcat(RootFolder,'\Debug\CameraControlInterface.exe')
-%run 'exeFile'
+XMLobj = createXMLobj();
 
 end
-

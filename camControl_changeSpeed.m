@@ -1,4 +1,4 @@
-function [  ] = camControl_changeIso( XMLobj, value )
+function [  ] = camControl_changeSpeed( XMLobj, value )
 %CAMCONTROL_CHANGEISO Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -8,11 +8,11 @@ XMLobj.getDocumentElement.appendChild(command_node);
 set_node = XMLobj.createElement('set');
 command_node.appendChild(set_node);
 
-ISO_node = XMLobj.createElement('ISO');
-set_node.appendChild(ISO_node);
+speed_node = XMLobj.createElement('SPEED');
+set_node.appendChild(speed_node);
 
 value_node = XMLobj.createTextNode(value);
-ISO_node.appendChild(value_node);
+speed_node.appendChild(value_node);
 
 end
 
