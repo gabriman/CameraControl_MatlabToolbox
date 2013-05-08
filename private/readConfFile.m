@@ -31,10 +31,8 @@ expression = xpath.compile('config/executable');
 executableNode = expression.evaluate(docNode, XPathConstants.NODE);
 executable = executableNode.getTextContent;
 
-
 keySet   = {'programFolder','directoryIn','fileIn','directoryOut','fileOut','executable'};
 valueSet = {programFolder,directoryIn,fileIn,directoryOut,fileOut,executable};
 mapObj = containers.Map(keySet,valueSet);
 
 end
-
