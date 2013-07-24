@@ -6,7 +6,7 @@ programFolder = uigetdir;
 options = readConfFile(programFolder);
 exe = char(options('executable'));
 % 
-command = ['start /b ' programFolder '\' exe];
+command = ['start ' programFolder '\' exe];     % Not "/b" for work correctly
 system(command)
 
 XMLobj = createXMLobj();
