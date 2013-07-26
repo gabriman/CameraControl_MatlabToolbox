@@ -5,7 +5,7 @@ function [ newPhotos ] = camControl_getPhotosNew( dir, oldPhotos )
 %   Detaileds explanation goes here
 
 
-actualPhotos = getPhotosActual(dir);
+actualPhotos = camControl_getPhotosActual(dir);
 
 newPhotos = setdiff(actualPhotos,oldPhotos);
 
