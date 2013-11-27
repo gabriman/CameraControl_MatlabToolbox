@@ -1,4 +1,5 @@
-[options,XMLobj] = camControl_Init;
+programFolder = uigetdir;
+[options,XMLobj] = camControl_init(programFolder);
 pause(2)
 camControl_changeTargetPhotos(XMLobj,'host','C:\Users\Gabry\Desktop\photosCanon');
 camControl_changeSpeed(XMLobj,'1/100');

@@ -1,3 +1,5 @@
+%Not working yet
+
 function [ commandString ] = camControl_xmlOutToString( commands )
 %CAMCONTROL_XMLOUTTOSTRING Summary of this function goes here
 %   Detailed explanation goes here

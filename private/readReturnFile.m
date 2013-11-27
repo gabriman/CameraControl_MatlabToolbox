@@ -14,6 +14,10 @@ fullPath = fullfile(options('programFolder'),char(options('directoryOut')),char(
 outputReaded = false;
 while outputReaded == false
     try
+        file = dir(fullPath);
+        if file.bytes==0 
+            continue
+        end
         XMLobj = xmlread(fullPath);
 
         removeIndentNodes(XMLobj.getChildNodes);
@@ -28,13 +32,13 @@ while outputReaded == false
             end
 
         elseif strcmpi(xmlRoot.getNodeName,'close')
-            arrayCommands(1)='';
+            arrayCommands(1)=struct('command','close','parameter','','code','0','message','','value','');
         end
         
         outputReaded = true;
 
     catch ME
-   
+        
     end
 end
 
