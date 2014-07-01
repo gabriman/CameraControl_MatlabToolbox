@@ -1,3 +1,24 @@
+function [  ] = camControl_getListIso( XMLobj )
+%CAMCONTROL_GETLISTISO Obtiene la listas sensibilidades ISO disponibles
+% Añade una orden a XMLobj que obtiene el la lista de valores disponibles 
+% de sensibilidad ISO en el estado actual de la cámara.
+%
+% @param XMLobj es el objeto XML al que se agregara la órden.
+% @return -
+
+command_node = XMLobj.createElement('command');
+XMLobj.getDocumentElement.appendChild(command_node);
+
+get_node = XMLobj.createElement('getlist');
+command_node.appendChild(get_node);
+
+ISO_node = XMLobj.createElement('ISO');
+get_node.appendChild(ISO_node);
+
+end
+
+
+
 %
 %Copyright 2013 Gabriel Rodríguez Rodríguez.
 %
@@ -13,19 +34,4 @@
 %
 %You should have received a copy of the GNU General Public License
 %along with this program. If not, see <http://www.gnu.org/licenses/>.
-
-function [  ] = camControl_getListIso( XMLobj )
-%CAMCONTROL_GETISO Summary of this function goes here
-%   Detailed explanation goes here
-
-command_node = XMLobj.createElement('command');
-XMLobj.getDocumentElement.appendChild(command_node);
-
-get_node = XMLobj.createElement('getlist');
-command_node.appendChild(get_node);
-
-ISO_node = XMLobj.createElement('ISO');
-get_node.appendChild(ISO_node);
-
-end
 

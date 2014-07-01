@@ -1,3 +1,24 @@
+function [  ] = camControl_getListAperture( XMLobj )
+%CAMCONTROL_GETLISTAPERTURE Obtiene la lista de aperturas disponibles
+% Añade una orden a XMLobj que obtiene el la lista de valores disponibles 
+% de apertura de diafragma en el estado actual de la cámara.
+%
+% @param XMLobj es el objeto XML al que se agregara la órden.
+% @return -
+
+command_node = XMLobj.createElement('command');
+XMLobj.getDocumentElement.appendChild(command_node);
+
+get_node = XMLobj.createElement('getlist');
+command_node.appendChild(get_node);
+
+aperture_node = XMLobj.createElement('APERTURE');
+get_node.appendChild(aperture_node);
+
+end
+
+
+
 %
 %Copyright 2013 Gabriel Rodríguez Rodríguez.
 %
@@ -13,19 +34,3 @@
 %
 %You should have received a copy of the GNU General Public License
 %along with this program. If not, see <http://www.gnu.org/licenses/>.
-
-function [  ] = camControl_getListAperture( XMLobj )
-%CAMCONTROL_GETISO Summary of this function goes here
-%   Detailed explanation goes here
-
-command_node = XMLobj.createElement('command');
-XMLobj.getDocumentElement.appendChild(command_node);
-
-get_node = XMLobj.createElement('getlist');
-command_node.appendChild(get_node);
-
-aperture_node = XMLobj.createElement('APERTURE');
-get_node.appendChild(aperture_node);
-
-end
-

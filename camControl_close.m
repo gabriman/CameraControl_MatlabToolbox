@@ -1,3 +1,20 @@
+function [  ] = camControl_close(XMLobj)
+%CAMCONTROL_CHANGECLOSE Cierra la cámara actualmetne abierta
+% Añade una orden a XMLobj para cerrar la cámara actualmente abierta.
+%
+% @param XMLobj es el objeto XML al que se agregara la orden.
+% @return -
+
+command_node = XMLobj.createElement('command');
+XMLobj.getDocumentElement.appendChild(command_node);
+
+set_node = XMLobj.createElement('close');
+command_node.appendChild(set_node);
+
+end
+
+
+
 %
 %Copyright 2013 Gabriel Rodríguez Rodríguez.
 %
@@ -14,14 +31,3 @@
 %You should have received a copy of the GNU General Public License
 %along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-function [  ] = camControl_close(XMLobj)
-%CAMCONTROL_CHANGEISO Summary of this function goes here
-%   Detailed explanation goes here
-
-command_node = XMLobj.createElement('command');
-XMLobj.getDocumentElement.appendChild(command_node);
-
-set_node = XMLobj.createElement('close');
-command_node.appendChild(set_node);
-
-end

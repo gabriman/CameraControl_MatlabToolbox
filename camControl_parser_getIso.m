@@ -1,3 +1,29 @@
+function [ value ] = camControl_parser_getIso( commands )
+%CAMCONTROL_PARSER_GETISO Extrae la apertura de la salida de los comandos
+% Analiza las respuestas de lasordenes previamente ejecutadas y obtiene 
+% el valor de la sensibilidad ISO cuando se ha solicitado la obtención del 
+% valor de dicho parámetro previamente.
+% Por ejemplo, si antes se ha solicitado el valor del valor ISO, luego se
+% ha cambiado y luego se ha vuelto a obtener, devolvera el nuevo valor.
+%
+% @param commands son las respuestas generadas al ejecutar previamente un conjunto
+% deórdenes.
+% @return value es el ultimo valor solicitado del parámetro al que 
+% corresponda la función.
+
+value = -1;
+
+for i=fliplr(1:size(commands,2)),       %Start searching for the end
+    if strcmp(commands(i).command,'get') && strcmp(commands(i).parameter,'ISO')
+        if strcmp(commands(i).code,'0')
+            value = char(commands(i).message);
+            break
+        end
+    end
+end
+
+
+
 %
 %Copyright 2013 Gabriel Rodríguez Rodríguez.
 %
@@ -13,18 +39,3 @@
 %
 %You should have received a copy of the GNU General Public License
 %along with this program. If not, see <http://www.gnu.org/licenses/>.
-
-function [ value ] = camControl_parser_getIso( commands )
-%CAMCONTROL_PARSER_GETISO Summary of this function goes here
-%   Detailed explanation goes here
-
-value = -1;
-
-for i=fliplr(1:size(commands,2)),       %Start searching for the end
-    if strcmp(commands(i).command,'get') && strcmp(commands(i).parameter,'ISO')
-        if strcmp(commands(i).code,'0')
-            value = char(commands(i).message);
-            break
-        end
-    end
-end

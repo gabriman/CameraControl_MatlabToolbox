@@ -1,3 +1,25 @@
+function [  ] = camControl_getSpeed( XMLobj )
+%CAMCONTROL_GETSPEED Obtiene la lista de velocidades de obturación
+%disponibles
+% Añade una orden a XMLobj que obtiene el la lista de valores disponibles 
+% de velocidad de obturación en el estado actual de la cámara.
+%
+% @param XMLobj es el objeto XML al que se agregara la órden.
+% @return -
+
+command_node = XMLobj.createElement('command');
+XMLobj.getDocumentElement.appendChild(command_node);
+
+set_node = XMLobj.createElement('get');
+command_node.appendChild(set_node);
+
+speed_node = XMLobj.createElement('SPEED');
+set_node.appendChild(speed_node);
+
+end
+
+
+
 %
 %Copyright 2013 Gabriel Rodríguez Rodríguez.
 %
@@ -13,19 +35,3 @@
 %
 %You should have received a copy of the GNU General Public License
 %along with this program. If not, see <http://www.gnu.org/licenses/>.
-
-function [  ] = camControl_getSpeed( XMLobj )
-%CAMCONTROL_GETISO Summary of this function goes here
-%   Detailed explanation goes here
-
-command_node = XMLobj.createElement('command');
-XMLobj.getDocumentElement.appendChild(command_node);
-
-set_node = XMLobj.createElement('get');
-command_node.appendChild(set_node);
-
-speed_node = XMLobj.createElement('SPEED');
-set_node.appendChild(speed_node);
-
-end
-

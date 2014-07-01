@@ -1,3 +1,24 @@
+function [  ] = camControl_take(XMLobj)
+%CAMCONTROL_TAKE Ordena a la cámara tomar una fotografía
+% Añade una orden a XMLobj para solicitar a la camara que tome una 
+% fotografía.
+%
+% @param XMLobj es el objeto XML al que se agregara la orden.
+% @return -
+
+command_node = XMLobj.createElement('command');
+XMLobj.getDocumentElement.appendChild(command_node);
+
+action_node = XMLobj.createElement('action');
+command_node.appendChild(action_node);
+
+take_node = XMLobj.createElement('take');
+action_node.appendChild(take_node);
+
+end
+
+
+
 %
 %Copyright 2013 Gabriel Rodríguez Rodríguez.
 %
@@ -13,18 +34,3 @@
 %
 %You should have received a copy of the GNU General Public License
 %along with this program. If not, see <http://www.gnu.org/licenses/>.
-
-function [  ] = camControl_take(XMLobj)
-%CAMCONTROL_CHANGEISO Summary of this function goes here
-%   Detailed explanation goes here
-
-command_node = XMLobj.createElement('command');
-XMLobj.getDocumentElement.appendChild(command_node);
-
-action_node = XMLobj.createElement('action');
-command_node.appendChild(action_node);
-
-take_node = XMLobj.createElement('take');
-action_node.appendChild(take_node);
-
-end

@@ -1,3 +1,23 @@
+function [  ] = camControl_getAperture( XMLobj )
+%CAMCONTROL_GETAPERTURE Obtiene el valor del diafragma
+% Añade una orden a XMLobj que obtiene el valor actual del diafragma.
+%
+% @param XMLobj es el objeto XML al que se agregara la orden.
+% @return -
+
+command_node = XMLobj.createElement('command');
+XMLobj.getDocumentElement.appendChild(command_node);
+
+set_node = XMLobj.createElement('get');
+command_node.appendChild(set_node);
+
+aperture_node = XMLobj.createElement('APERTURE');
+set_node.appendChild(aperture_node);
+
+end
+
+
+
 %
 %Copyright 2013 Gabriel Rodríguez Rodríguez.
 %
@@ -13,19 +33,3 @@
 %
 %You should have received a copy of the GNU General Public License
 %along with this program. If not, see <http://www.gnu.org/licenses/>.
-
-function [  ] = camControl_getAperture( XMLobj )
-%CAMCONTROL_GETISO Summary of this function goes here
-%   Detailed explanation goes here
-
-command_node = XMLobj.createElement('command');
-XMLobj.getDocumentElement.appendChild(command_node);
-
-set_node = XMLobj.createElement('get');
-command_node.appendChild(set_node);
-
-aperture_node = XMLobj.createElement('APERTURE');
-set_node.appendChild(aperture_node);
-
-end
-

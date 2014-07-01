@@ -1,27 +1,15 @@
-%
-%Copyright 2013 Gabriel Rodríguez Rodríguez.
-%
-%This program is free software: you can redistribute it and/or modify
-%it under the terms of the GNU General Public License as published by
-%the Free Software Foundation, either version 3 of the License, or
-%(at your option) any later version.
-%
-%This program is distributed in the hope that it will be useful,
-%but WITHOUT ANY WARRANTY; without even the implied warranty of
-%MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-%GNU General Public License for more details.
-%
-%You should have received a copy of the GNU General Public License
-%along with this program. If not, see <http://www.gnu.org/licenses/>.
-
 function [  ] = camControl_changeTargetPhotos( XMLobj, value, pathDir )
-%CAMCONTROL_CHANGEISO Summary of this function goes here
-%   Detailed explanation goes here
-%   value could be "camera", "host" or "both"
-%   pathDir is optional (only used when is host or both). If you choose host
-%   or both without path, path defined before will be used(or default path
-%   if never was changed
-
+%CAMCONTROL_CHANGETARGETPHOTOS Cambia el destino de las fotos que se 
+%tomarán
+% Añade una orden a XMLobj para cambiar el objetivo 
+% donde se almacenaran las fotografías al hacer nuevas tomas.
+%
+% @param XMLobj es el objeto XML al que se agregara la orden.
+% @param value es el objetivo donde se quieren almacenar las fotos. 
+% Puede ser "camera", "host" o "both".
+% @param pathDir es el directorio donde queremos almacenar las fotografías,
+%solamente necesario en caso de que value sea \host" o \both".
+% @return -
 
 command_node = XMLobj.createElement('command');
 XMLobj.getDocumentElement.appendChild(command_node);
@@ -46,3 +34,20 @@ end
 
 end
 
+
+
+%
+%Copyright 2013 Gabriel Rodríguez Rodríguez.
+%
+%This program is free software: you can redistribute it and/or modify
+%it under the terms of the GNU General Public License as published by
+%the Free Software Foundation, either version 3 of the License, or
+%(at your option) any later version.
+%
+%This program is distributed in the hope that it will be useful,
+%but WITHOUT ANY WARRANTY; without even the implied warranty of
+%MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+%GNU General Public License for more details.
+%
+%You should have received a copy of the GNU General Public License
+%along with this program. If not, see <http://www.gnu.org/licenses/>.

@@ -1,3 +1,31 @@
+function [ value ] = camControl_parser_getListIso( commands )
+%CAMCONTROL_PARSER_GETLISTISO Extrae la lista de sensibilidades ISO de la 
+%salida de los comandos
+% Analiza las respuestas de las ordenes previamente ejecutadas y obtiene 
+% la lista de valores disponibles para el parámetro previamente solicitado.
+%
+% @param commands son las respuestas generadas al ejecutar previamente un 
+% conjunto de órdenes.
+% @return value es la lista de valores disponibles del parámetro al que 
+% corresponda la función.
+
+%value = -1;
+
+for i=fliplr(1:size(commands,2)),       %Start searching for the end
+    if strcmp(commands(i).command,'getlist') && strcmp(commands(i).parameter,'ISO')
+        if strcmp(commands(i).code,'0')
+            valuetemp = commands(i).message;
+            break
+        end
+    end
+end
+
+
+value = cell(valuetemp.split(';'));
+
+
+
+
 %
 %Copyright 2013 Gabriel Rodríguez Rodríguez.
 %
@@ -13,21 +41,3 @@
 %
 %You should have received a copy of the GNU General Public License
 %along with this program. If not, see <http://www.gnu.org/licenses/>.
-
-function [ value ] = camControl_parser_getListIso( commands )
-%CAMCONTROL_PARSER_GETISO Summary of this function goes here
-%   Detailed explanation goes here
-
-%value = -1;
-
-for i=fliplr(1:size(commands,2)),       %Start searching for the end
-    if strcmp(commands(i).command,'getlist') && strcmp(commands(i).parameter,'ISO')
-        if strcmp(commands(i).code,'0')
-            valuetemp = commands(i).message;
-            break
-        end
-    end
-end
-
-
-value = cell(valuetemp.split(';'));

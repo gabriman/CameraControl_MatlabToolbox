@@ -1,3 +1,26 @@
+function [ newPhotos ] = camControl_getPhotosNew( dir, oldPhotos )
+%CAMCONTROL_DETECTNEWPHOTOS Obtiene los nombres de las NUEVAS fotos del directorio
+% Obtiene una lista de los nombres de los las nuevas fotografías detectadas
+% comparando las fotografías actuales del directorio con la lista de las 
+% que había anteriormente.
+%
+% @param dir es el directorio donde queremos obtener la lista de imágenes.
+% @param oldPhotos es la lista de fotografas con la que queremos comparar
+% la nueva lista de fotografías. Se obtiene previamente con la función 
+% camControl_getPhotosActual.
+% @return newPhotos es la lista de nuevas fotografías.
+
+
+actualPhotos = camControl_getPhotosActual(dir);
+
+newPhotos = setdiff(actualPhotos,oldPhotos);
+
+
+
+end
+
+
+
 %
 %Copyright 2013 Gabriel Rodríguez Rodríguez.
 %
@@ -13,19 +36,3 @@
 %
 %You should have received a copy of the GNU General Public License
 %along with this program. If not, see <http://www.gnu.org/licenses/>.
-
-function [ newPhotos ] = camControl_getPhotosNew( dir, oldPhotos )
-%DETECTNEWPHOTOS Return list of photos which wasnt in previuosly list of
-%files
-
-%   Detaileds explanation goes here
-
-
-actualPhotos = camControl_getPhotosActual(dir);
-
-newPhotos = setdiff(actualPhotos,oldPhotos);
-
-
-
-end
-
